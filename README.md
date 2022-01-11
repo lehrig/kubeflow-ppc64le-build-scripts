@@ -1,2 +1,2 @@
-# kubeflow-ppc64le-build-scripts
-Scripts for building Kubeflow images on ppc64le
+# Kubeflow Build Scripts for ppc64le
+Scripts for building Kubeflow images on ppc64le (IBM Power processor architecture).
