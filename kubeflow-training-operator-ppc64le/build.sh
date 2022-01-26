@@ -14,7 +14,7 @@ sed -i 's/from kubeflow.testing import util/#from kubeflow.testing import util/g
 sed -i 's/should_push=True/should_push=False/g' py/kubeflow/tf_operator/release.py
 
 cd py
-CRYPTOGRAPHY_DONT_BUILD_RUST=1 pip install --upgrade --quiet --no-cache-dir filelock pyyaml google-api-python-client google-cloud-speech google-cloud-storage jinja2 kubernetes
+#pip install --upgrade --quiet --no-cache-dir filelock pyyaml google-api-python-client google-cloud-speech google-cloud-storage jinja2 kubernetes
 sudo env "PATH=$PATH" env "GOPATH=$GOPATH" python -m kubeflow.tf_operator.release local
 
 sudo docker images
