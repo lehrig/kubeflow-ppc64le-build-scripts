@@ -1,5 +1,11 @@
 #!/bin/sh
 
+git clone https://github.com/argoproj/argo-workflows.git
+
+cd argo-workflows
+
+git checkout $RELEASE
+
 # buildx not supported with Jenkins
 # see: https://issues.jenkins.io/browse/JENKINS-61372?page=com.atlassian.streams.streams-jira-plugin%3Aactivity-stream-issue-tab
 sed -i "s/buildx build/build/g" Makefile
