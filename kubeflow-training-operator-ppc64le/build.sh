@@ -15,6 +15,7 @@ sed -i 's/should_push=True/should_push=False/g' py/kubeflow/tf_operator/release.
 
 cd py
 #pip install --upgrade --quiet --no-cache-dir filelock pyyaml google-api-python-client google-cloud-speech google-cloud-storage jinja2 kubernetes
+pip install --upgrade --quiet --no-cache-dir pyyaml
 sudo env "PATH=$PATH" env "GOPATH=$GOPATH" python -m kubeflow.tf_operator.release local
 
 sudo docker images
