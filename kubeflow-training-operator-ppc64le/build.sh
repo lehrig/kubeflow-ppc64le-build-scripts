@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Needed for pip install
-sudo apt-get update -y && sudo apt-get install rustc -y
-rustc --version
-
 # Follow https://github.com/kubeflow/training-operator/blob/master/docs/development/developer_guide.md
 export GIT_TRAINING=$(pwd)
 sudo env "PATH=$PATH" mkdir -p $(go env GOPATH)/src/github.com/kubeflow
@@ -13,14 +9,8 @@ sudo env "PATH=$PATH" go install github.com/kubeflow/tf-operator/cmd/training-op
 
 # ppc64le fixes
 sed -i 's/GOARCH=amd64/GOARCH=ppc64le/g' build/images/training-operator/Dockerfile
-sed -i 's/from kubeflow.testing import util/#from kubeflow.testing import util/g' py/kubeflow/tf_operator/util.py
-sed -i 's/should_push=True/should_push=False/g' py/kubeflow/tf_operator/release.py
 
-cd py
-
-# compiled this list of packages from error messages of the subsequent python command
-pip install --upgrade --quiet --no-cache-dir filelock pyyaml google-api-python-client google-cloud-speech google-cloud-storage jinja2 kubernetes
-sudo env "PATH=$PATH" env "GOPATH=$GOPATH" python -m kubeflow.tf_operator.release local
+sudo docker build -t quay.io/ibm/${IMAGE}:${RELEASE} -f build/images/training-operator/Dockerfile .
 
 sudo docker images
 
