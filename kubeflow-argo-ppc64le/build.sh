@@ -13,8 +13,10 @@ sed -i "s/docker buildx build/DOCKER_BUILDKIT=1 docker build/g" Makefile
 sudo env "PATH=$PATH" make argo-server.key
 sudo env "PATH=$PATH" make images
 
-sudo docker tag argoproj/workflow-controller:latest quay.io/ibm/kubeflow-workflow-controller-ppc64le:${RELEASE}
-sudo docker tag argoproj/argoexec:latest quay.io/ibm/kubeflow-argoexec-ppc64le:${RELEASE}
+sudo docker images
+
+sudo docker tag argoproj/workflow-controller:${RELEASE} quay.io/ibm/kubeflow-workflow-controller-ppc64le:${RELEASE}
+sudo docker tag argoproj/argoexec:${RELEASE} quay.io/ibm/kubeflow-argoexec-ppc64le:${RELEASE}
 
 set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
