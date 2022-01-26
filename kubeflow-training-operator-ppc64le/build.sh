@@ -5,7 +5,7 @@
 export GIT_TRAINING=$(pwd)
 
 sudo env "PATH=$PATH" mkdir -p $(go env GOPATH)/src/github.com/kubeflow
-sudo env "PATH=$PATH" ln -sf ${GIT_TRAINING} ${go env GOPATH}/src/github.com/kubeflow/training-operator
+sudo env "PATH=$PATH" ln -sf ${GIT_TRAINING} $(go env GOPATH)/src/github.com/kubeflow/training-operator
 sudo env "PATH=$PATH" GO111MODULE="on" go mod vendor
 sudo env "PATH=$PATH" go install github.com/kubeflow/tf-operator/cmd/training-operator.v1
 
