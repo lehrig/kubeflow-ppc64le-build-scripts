@@ -12,10 +12,6 @@ sed -i 's/GOARCH=amd64/GOARCH=ppc64le/g' build/images/training-operator/Dockerfi
 
 sudo docker build -t quay.io/ibm/${IMAGE}:${RELEASE} -f build/images/training-operator/Dockerfile .
 
-sudo docker images
-
-sudo docker tag gcr.io/kubeflow-ci/tf_operator:latest quay.io/ibm/${IMAGE}:${RELEASE}
-
 set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
 set -x
