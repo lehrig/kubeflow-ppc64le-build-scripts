@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Needed for pip install
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo apt-get update -y && sudo apt-get install rustc
 rustc --version
 
 # Follow https://github.com/kubeflow/training-operator/blob/master/docs/development/developer_guide.md
