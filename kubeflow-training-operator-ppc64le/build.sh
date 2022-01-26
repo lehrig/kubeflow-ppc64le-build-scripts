@@ -14,8 +14,10 @@ sed -i 's/from kubeflow.testing import util/#from kubeflow.testing import util/g
 sed -i 's/should_push=True/should_push=False/g' py/kubeflow/tf_operator/release.py
 
 cd py
-#pip install --upgrade --quiet --no-cache-dir filelock pyyaml google-api-python-client google-cloud-speech google-cloud-storage jinja2 kubernetes
-pip install --upgrade --quiet --no-cache-dir pyyaml google-api-python-client google-cloud-speech google-cloud-storage
+# https://techoverflow.net/2021/10/05/how-to-fix-pio-remote-agent-start-error-cant-find-rust-compiler/
+sudo apt -y install rustc
+# compiled this list of packages from error messages of the subsequent python command
+pip install --upgrade --quiet --no-cache-dir filelock pyyaml google-api-python-client google-cloud-speech google-cloud-storage jinja2 kubernetes
 sudo env "PATH=$PATH" env "GOPATH=$GOPATH" python -m kubeflow.tf_operator.release local
 
 sudo docker images
