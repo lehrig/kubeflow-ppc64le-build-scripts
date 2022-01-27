@@ -1,5 +1,5 @@
 #!/bin/sh
-sed -i 's/FROM node:14\.18\.2/FROM node:14\.18\.2-alpine/g' frontend/Dockerfile
+sed -i 's/FROM node:14\.18\.2 as build/FROM node:14\.18\.2-alpine as build/g' frontend/Dockerfile
 
 sudo docker build -t quay.io/ibm/${IMAGE}:${RELEASE} -f frontend/Dockerfile .
 
