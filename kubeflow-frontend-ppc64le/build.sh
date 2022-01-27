@@ -1,4 +1,6 @@
 #!/bin/sh
+sed -i 's/FROM node/FROM ppc64le\/node/g' frontend/Dockerfile
+
 sudo docker build -t quay.io/ibm/${IMAGE}:${RELEASE} -f frontend/Dockerfile .
 
 set +x
