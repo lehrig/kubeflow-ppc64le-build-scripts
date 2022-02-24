@@ -17,7 +17,7 @@ case "$TARGET_RUNTIME" in
    ;;
 esac
 
-export TAG=elyra$ELYRA_VERSION-py${PYTHON_VERSION}-${TARGET_RUNTIME}${RUNTIME_VERSION}-
+export TAG=elyra$ELYRA_VERSION-py${PYTHON_VERSION}-${TARGET_RUNTIME}${RUNTIME_VERSION}
 export IMAGE=$REGISTRY/${IMAGE}:${TAG}
 
 sudo chmod 777 /var/run/docker.sock
