@@ -7,7 +7,7 @@ case "$TARGET_RUNTIME" in
    "tensorflow-cpu") export RUNTIME_VERSION=$TENSORFLOW_VERSION
    ;;
 esac
-export TAG=py${PYTHON_VERSION}-${TARGET_RUNTIME}${RUNTIME_VERSION}
+export TAG=elyra${ELYRA_VERSION}-py${PYTHON_VERSION}-${TARGET_RUNTIME}${RUNTIME_VERSION}
 export TARGET=${REGISTRY}/${IMAGE}:${TAG}
 
 sudo chmod 777 /var/run/docker.sock
