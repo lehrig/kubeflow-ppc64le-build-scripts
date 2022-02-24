@@ -9,6 +9,8 @@ case "$TARGET_RUNTIME" in
    ;;
    "pytorch") export RUNTIME_VERSION=$PYTORCH_VERSION
    ;;
+   "pytorch-cpu") export RUNTIME_VERSION=$PYTORCH_VERSION
+   ;;
    "r") export RUNTIME_VERSION=$R_VERSION
    ;;
    "tensorflow") export RUNTIME_VERSION=$TENSORFLOW_VERSION
