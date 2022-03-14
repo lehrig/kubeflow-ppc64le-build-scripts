@@ -5,7 +5,7 @@ sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM mgiessing\/protoc-gen-doc/g' pkg/
 sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
 sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
 
-sudo make build REGISTRY=quay.io/ibm TAG=${RELEASE} CPU_ARCH=ppc64le
+sudo env "PATH=$PATH" make build REGISTRY=quay.io/ibm TAG=${RELEASE} CPU_ARCH=ppc64le
 
 set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
