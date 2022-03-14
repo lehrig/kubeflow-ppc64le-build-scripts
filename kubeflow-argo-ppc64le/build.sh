@@ -9,6 +9,7 @@ git checkout $RELEASE
 # buildx not supported with Jenkins
 # see: https://issues.jenkins.io/browse/JENKINS-61372?page=com.atlassian.streams.streams-jira-plugin%3Aactivity-stream-issue-tab
 sed -i "s/docker buildx build/DOCKER_BUILDKIT=1 docker build/g" Makefile
+sed -i "s/--output=type=docker //g" Makefile
 
 sudo env "PATH=$PATH" make images
 
