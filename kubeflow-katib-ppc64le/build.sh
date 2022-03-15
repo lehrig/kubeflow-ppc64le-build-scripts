@@ -1,17 +1,17 @@
 #!/bin/sh
 
 ## Begin: Install Java
+export JAVA_HOME=$(pwd)/java
 wget http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/8.0.7.5/linux/ppc64le/ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
 chmod +x ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
-cat >> installer.properties <<'EOF'
+cat >> installer.properties <<EOF
 INSTALLER_UI=silent
-USER_INSTALL_DIR=/opt/java
+USER_INSTALL_DIR=$JAVA_HOME
 LICENSE_ACCEPTED=TRUE
 EOF
 
 ./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin -r ./installer.properties
 
-export JAVA_HOME=/opt/java
 export PATH=$JAVA_HOME/bin:$PATH
 rm -f ./installer.properties
 rm -f ./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
