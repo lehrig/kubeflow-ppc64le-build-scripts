@@ -2,7 +2,6 @@
 
 cd components/notebook-controller
 
-sed -i 's/${IMG}/${IMG}:$(TAG)/g' Makefile
 sed -i 's/.\/third_party\/check-license.sh/#.\/third_party\/check-license.sh/g' Makefile
 sed -i 's/docker-build: test/docker-build: #test/g' Makefile
 sed -i 's/GOARCH=amd64/GOARCH=ppc64le/g' Dockerfile
