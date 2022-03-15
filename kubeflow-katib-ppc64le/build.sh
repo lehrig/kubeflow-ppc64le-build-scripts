@@ -1,5 +1,23 @@
 #!/bin/sh
 
+## Begin: Install Java
+wget http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/8.0.7.5/linux/ppc64le/ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
+chmod +x ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
+cat >> installer.properties <<'EOF'
+INSTALLER_UI=silent
+USER_INSTALL_DIR=/opt/java
+LICENSE_ACCEPTED=TRUE
+EOF
+
+./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin -r ./installer.properties
+
+export JAVA_HOME=/opt/java
+export PATH=$JAVA_HOME/bin:$PATH
+rm -f ./installer.properties
+rm -f ./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
+## Finshed: Install Java
+
+
 sed -i 's/znly\/protoc/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM mgiessing\/protoc-gen-doc/g' pkg/apis/manager/v1beta1/gen-doc/Dockerfile
 sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
