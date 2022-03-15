@@ -14,8 +14,8 @@ RUN ln -s /usr/bin/chromium /usr/bin/chromium-browser
 EOF
 
 sed -i 's/TAG := $(shell date +v%Y%m%d)-$(GIT_VERSION)/TAG ?= '"${RELEASE}"' /g' Makefile
-sed -i 's/FROM node:12.18.3-alpine/FROM ppc64le\/node:12-stretch/g' Dockerfile
-sed -i '12,19d' Dockerfile
+sed -i 's/FROM node:12.22.8-alpine/FROM ppc64le\/node:12-stretch/g' Dockerfile
+sed -i '12,20d' Dockerfile
 sed -i "/# Installs latest Chromium package and configures environment for testing/r install-chromium.txt" Dockerfile
 sed -i 's/npm test/#npm test/g' Dockerfile
 
