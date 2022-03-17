@@ -19,7 +19,7 @@ rm -f ./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
 
 sed -i 's/set -e//g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
-sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM mgiessing\/protoc-gen-doc/g' pkg/apis/manager/v1beta1/gen-doc/Dockerfile
+sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM docker.io\/mgiessing\/protoc-gen-doc/g' pkg/apis/manager/v1beta1/gen-doc/Dockerfile
 sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
 sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
 
