@@ -2,6 +2,7 @@
 
 sudo apt-get update -y && sudo apt-get install openjdk-11-jdk -y
 
+sed -i 's/set -e//g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/set -e//g' pkg/apis/manager/health/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/health/build.sh
