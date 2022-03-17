@@ -1,24 +1,10 @@
 #!/bin/sh
 
-## Begin: Install Java
-export JAVA_HOME=$(pwd)/java
-wget http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/8.0.7.5/linux/ppc64le/ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
-chmod +x ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
-cat >> installer.properties <<EOF
-INSTALLER_UI=silent
-USER_INSTALL_DIR=$JAVA_HOME
-LICENSE_ACCEPTED=TRUE
-EOF
-
-./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin -r ./installer.properties
-
-export PATH=$JAVA_HOME/bin:$PATH
-rm -f ./installer.properties
-rm -f ./ibm-java-sdk-8.0-7.5-ppc64le-archive.bin
-## Finshed: Install Java
+sudo apt-get update -y && sudo apt-get install openjdk-11-jdk build-essential -y
 
 sed -i 's/set -e//g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
+sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/health/build.sh
 sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM docker.io\/mgiessing\/protoc-gen-doc:1.5.7/g' pkg/apis/manager/v1beta1/gen-doc/Dockerfile
 sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
 sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
