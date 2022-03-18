@@ -12,8 +12,8 @@ sed -i "/# for pytest/r expected-fail.txt" Makefile
 
 sed -i 's/go generate .\/pkg\/... .\/cmd\/.../$(call EXPECTED_FAIL, go generate .\/pkg\/... .\/cmd\/...)/g' Makefile
 sed -i 's/hack\/gen-python-sdk\/gen-sdk.sh/$(call EXPECTED_FAIL, hack\/gen-python-sdk\/gen-sdk.sh)/g' Makefile
-sed -i 's/cd .\/pkg\/apis\/manager\/v1beta1 && .\/build.sh/$(call EXPECTED_FAIL, cd .\/pkg\/apis\/manager\/v1beta1 && .\/build.sh)/g' Makefile
-sed -i 's/cd .\/pkg\/apis\/manager\/health && .\/build.sh/$(call EXPECTED_FAIL, cd .\/pkg\/apis\/manager\/health && .\/build.sh)/g' Makefile
+sed -i 's/cd .\/pkg\/apis\/manager\/v1beta1 \&\& .\/build.sh/$(call EXPECTED_FAIL, cd .\/pkg\/apis\/manager\/v1beta1 \&\& .\/build.sh)/g' Makefile
+sed -i 's/cd .\/pkg\/apis\/manager\/health \&\& .\/build.sh/$(call EXPECTED_FAIL, cd .\/pkg\/apis\/manager\/health \&\& .\/build.sh)/g' Makefile
 
 sed -i 's/set -e//g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
