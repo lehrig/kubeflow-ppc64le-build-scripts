@@ -8,9 +8,12 @@ sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
 
 sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
 
+export GOROOT=$(pwd)/go
+export GOPATH=$GOROOT/bin
+export PATH=$GOPATH:$PATH
+
 wget https://go.dev/dl/go1.17.8.linux-ppc64le.tar.gz
-rm -rf /usr/local/go
-tar -C /usr/local -xzf go1.17.*
+tar -C $(pwd) -xzf go1.17.*
 rm -rf go1.17.*
 
 sudo apt-get update -y && sudo apt-get install openjdk-11-jdk -y
