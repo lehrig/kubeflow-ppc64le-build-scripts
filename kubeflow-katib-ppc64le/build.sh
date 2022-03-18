@@ -3,7 +3,7 @@
 # Fixes for Error 139
 sed -i 's/set -e//g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/set -e//g' pkg/apis/manager/health/build.sh
-echo 'echo("This is an Error 139 fix")' >> pkg/apis/manager/health/build.sh
+echo 'echo "This is an Error 139 fix"' >> pkg/apis/manager/health/build.sh
 
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/health/build.sh
