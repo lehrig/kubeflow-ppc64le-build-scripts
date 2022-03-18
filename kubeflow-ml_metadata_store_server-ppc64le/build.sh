@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export BAZEL_VERSION=$(cat ml_metadata/tools/docker_server/Dockerfile | awk '/ENV BAZEL/{print $3}')
-conda install bazel==$BAZEL_VERSION -y
 
 sed -i "s/DOCKER_IMAGE_REPO=.*/DOCKER_IMAGE_REPO=quay.io\/ibm\/${IMAGE}/g" ml_metadata/tools/docker_server/build_docker_image.sh
 sed -i "s/DOCKER_IMAGE_TAG=.*/DOCKER_IMAGE_TAG=$RELEASE/g" ml_metadata/tools/docker_server/build_docker_image.sh
