@@ -12,7 +12,7 @@ sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
 
 
 sudo apt-get update -y && sudo apt-get install openjdk-11-jdk -y
-sudo env "PATH=$PATH" env "GOROOT=$GOROOT" env "GOPATH=$GOPATH" env GO111MODULE="on" make build REGISTRY=quay.io/ibm TAG=${RELEASE} CPU_ARCH=ppc64le
+sudo env "PATH=$PATH" env "GOROOT=$GOROOT" env "GOPATH=$GOPATH" env GO111MODULE="off" make build REGISTRY=quay.io/ibm TAG=${RELEASE} CPU_ARCH=ppc64le
 
 set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
