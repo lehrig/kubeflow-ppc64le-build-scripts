@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Fixes for Error 139
+sed -i 's/set -e//g' pkg/apis/manager/v1beta1/build.sh
+sed -i 's/set -e//g' pkg/apis/manager/health/build.sh
+echo 'echo("This is an Error 139 fix")' >> pkg/apis/manager/health/build.sh
+
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/health/build.sh
 
@@ -7,14 +12,6 @@ sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM docker.io\/mgiessing\/protoc-gen-
 sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
 
 sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
-
-export GOROOT=$(pwd)/go
-export GOPATH=$GOROOT/bin
-export PATH=$GOPATH:$PATH
-
-wget https://go.dev/dl/go1.17.8.linux-ppc64le.tar.gz
-tar -C $(pwd) -xzf go1.17.*
-rm -rf go1.17.*
 
 sudo apt-get update -y && sudo apt-get install openjdk-11-jdk -y
 sudo env "PATH=$PATH" env "GOROOT=$GOROOT" env "GOPATH=$GOPATH" make build REGISTRY=quay.io/ibm TAG=${RELEASE} CPU_ARCH=ppc64le
