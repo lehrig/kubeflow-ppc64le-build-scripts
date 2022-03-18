@@ -20,10 +20,10 @@ set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
 set -x
 
-sudo docker tag ${REGISTRY}/katib-controller:${RELEASE} ${REGISTRY}/katib-controller-ppc64le:${RELEASE}
-sudo docker tag ${REGISTRY}/katib-db-manager:${RELEASE} ${REGISTRY}/katib-db-manager-ppc64le:${RELEASE}
-sudo docker tag ${REGISTRY}/katib-ui:${RELEASE} ${REGISTRY}/katib-ui-ppc64le:${RELEASE}
+sudo docker tag quay.io/ibm/katib-controller:${RELEASE} quay.io/ibm/katib-controller-ppc64le:${RELEASE}
+sudo docker tag quay.io/ibm/katib-db-manager:${RELEASE} quay.io/ibm/katib-db-manager-ppc64le:${RELEASE}
+sudo docker tag quay.io/ibm/katib-ui:${RELEASE} quay.io/ibm/katib-ui-ppc64le:${RELEASE}
 
-sudo docker push ${REGISTRY}/katib-controller-ppc64le:${RELEASE}
-sudo docker push ${REGISTRY}/katib-db-manager-ppc64le:${RELEASE}
-sudo docker push ${REGISTRY}/katib-ui-ppc64le:${RELEASE}
+sudo docker push quay.io/ibm/katib-controller-ppc64le:${RELEASE}
+sudo docker push quay.io/ibm/katib-db-manager-ppc64le:${RELEASE}
+sudo docker push quay.io/ibm/katib-ui-ppc64le:${RELEASE}
