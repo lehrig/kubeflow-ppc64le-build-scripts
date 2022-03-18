@@ -7,6 +7,7 @@ sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/v1beta1/
 
 sed -i 's/set -e//g' pkg/apis/manager/health/build.sh
 sed -i 's/znly\/protoc/docker.io\/mgiessing\/protoc/g' pkg/apis/manager/health/build.sh
+sed -i 's/docker run -i --rm -v $PWD:$(pwd) -w $(pwd) znly\/protoc --plugin/#docker run -i --rm -v $PWD:$(pwd) -w $(pwd) znly\/protoc --plugin/g' pkg/apis/manager/health/build.sh 
 
 sed -i 's/FROM pseudomuto\/protoc-gen-doc/FROM docker.io\/mgiessing\/protoc-gen-doc:1.5.7/g' pkg/apis/manager/v1beta1/gen-doc/Dockerfile
 sed -i 's/node:12/ppc64le\/node:12/g' cmd/new-ui/v1beta1/Dockerfile
