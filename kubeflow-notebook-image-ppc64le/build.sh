@@ -13,6 +13,8 @@ case "$TARGET_DOCKER_FILE" in
    ;;
    "Dockerfile.tensorflow-gpu") export TAG=$TAG-tensorflow-gpu${TENSORFLOW_VERSION}
    ;;
+   "Dockerfile.r") export TAG=$TAG-r
+   ;;
 esac
 export TARGET=${REGISTRY}/${IMAGE}:${TAG}
 
