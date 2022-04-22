@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export REGISTRY=quay.io/ibm
-export TARGET=${REGISTRY}/${IMAGE}:${TAG}
 export TAG=elyra${ELYRA_VERSION}-py${PYTHON_VERSION}
 case "$TARGET_DOCKER_FILE" in
    "Dockerfile.base") export TAG=$TAG-base
@@ -20,7 +19,7 @@ case "$TARGET_DOCKER_FILE" in
      export TARGET_RUNTIME=tensorflow
    ;;
 esac
-
+export TARGET=${REGISTRY}/${IMAGE}:${TAG}
 
 sudo chmod 777 /var/run/docker.sock
 
