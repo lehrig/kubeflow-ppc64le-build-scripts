@@ -5,7 +5,10 @@ cd spark-on-k8s-operator
 git checkout ${RELEASE}
 
 sed -i 's/golang/docker.io\/ppc64le\/golang/g' Dockerfile.rh
-sed -i 's/amd64/ppc64le/g' Dockerfile.rh 
+sed -i 's/amd64/ppc64le/g' Dockerfile.rh
+sed -i 's/COPY hack\/install/#COPY hack\/install/g' Dockerfile.rh 
+sed -i 's/RUN --mount/#RUN --mount/g' Dockerfile.rh 
+sed -i 's/RUN rm \/install/#RUN rm \/install/g' Dockerfile.rh 
 
 sudo chmod 777 /var/run/docker.sock
 
