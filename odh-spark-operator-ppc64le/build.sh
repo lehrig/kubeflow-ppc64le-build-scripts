@@ -15,8 +15,7 @@ export TARGET=${REGISTRY}/${IMAGE}:${RELEASE}
 export SPARK_TAG=s${SPARK_VERSION}-h${HADOOP_VERSION}_v1.0.0
 export SPARK_IMAGE=${REGISTRY}/odh-spark-ppc64le:${SPARK_TAG}
 
-export DOCKER_BUILDKIT=1
-sudo docker build --build-arg SPARK_IMAGE=${SPARK_IMAGE} -t ${TARGET} -f Dockerfile.rh .
+sudo env "DOCKER_BUILDKIT=1" docker build --build-arg SPARK_IMAGE=${SPARK_IMAGE} -t ${TARGET} -f Dockerfile.rh .
 
 set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
