@@ -7,7 +7,7 @@ git checkout ${RELEASE}
 sed -i 's/golang/docker.io\/ppc64le\/golang/g' Dockerfile
 sed -i 's/amd64/ppc64le/g' Dockerfile
 sed -i 's/ --allow-releaseinfo-change//g' Dockerfile
-sed -i 's/apt-get install -y/apt-get install -y --allow-unauthenticated/g' spark3.Dockerfile
+sed -i 's/apt-get install -y/apt-get install -y --allow-unauthenticated/g' Dockerfile
 
 sudo chmod 777 /var/run/docker.sock
 
