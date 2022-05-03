@@ -2,6 +2,7 @@
 
 git clone https://github.com/GoogleCloudPlatform/spark-on-k8s-operator.git
 cd spark-on-k8s-operator
+git checkout ${RELEASE}
 
 sed -i 's/golang/docker.io\/ppc64le\/golang/g' Dockerfile.rh
 sed -i 's/amd64/ppc64le/g' Dockerfile.rh 
