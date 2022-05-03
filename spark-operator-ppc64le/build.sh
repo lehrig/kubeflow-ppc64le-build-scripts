@@ -6,7 +6,6 @@ git checkout ${RELEASE}
 
 sed -i 's/golang/docker.io\/ppc64le\/golang/g' Dockerfile
 sed -i 's/amd64/ppc64le/g' Dockerfile
-sed -i 's/ --allow-releaseinfo-change//g' Dockerfile
 
 sudo chmod 777 /var/run/docker.sock
 
@@ -23,4 +22,3 @@ echo $quay_p | sudo docker login --username $quay_u --password-stdin https://qua
 set -x
 
 sudo docker push ${TARGET}
-
