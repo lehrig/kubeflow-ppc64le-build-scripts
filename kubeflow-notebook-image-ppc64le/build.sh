@@ -9,9 +9,7 @@ case "$TARGET_DOCKER_FILE" in
    ;;
    "Dockerfile.scipy") export TAG=$TAG-scipy
    ;;  
-   "Dockerfile.tensorflow-cpu") export TAG=$TAG-tensorflow-cpu${TENSORFLOW_VERSION}
-   ;;
-   "Dockerfile.tensorflow-gpu") export TAG=$TAG-tensorflow-gpu${TENSORFLOW_VERSION}
+   "Dockerfile.tensorflow") export TAG=$TAG-$(if [ "$SUPPORT_GPU" = true ]; then echo "tensorflow-gpu"; else echo "tensorflow-cpu"; fi)${TENSORFLOW_VERSION}
    ;;
    "Dockerfile.r") export TAG=$TAG-r
    ;;
@@ -20,7 +18,7 @@ export TARGET=${REGISTRY}/${IMAGE}:${TAG}
 
 sudo chmod 777 /var/run/docker.sock
 
-docker build --squash --build-arg NB_GID=0 --build-arg ELYRA_VERSION=$ELYRA_VERSION --build-arg PYTHON_VERSION=$PYTHON_VERSION --build-arg TENSORFLOW_VERSION=$TENSORFLOW_VERSION -t $TARGET -f $TARGET_DOCKER_FILE .
+docker build --squash --build-arg NB_GID=0 --build-arg ELYRA_VERSION=$ELYRA_VERSION --build-arg PYTHON_VERSION=$PYTHON_VERSION --build-arg TENSORFLOW_VERSION=$TENSORFLOW_VERSION --build-arg SUPPORT_GPU=$SUPPORT_GPU -t $TARGET -f $TARGET_DOCKER_FILE .
 
 set +x
 echo $quay_p | sudo docker login --username $quay_u --password-stdin https://quay.io
