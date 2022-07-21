@@ -16,6 +16,7 @@ case "$TARGET_DOCKER_FILE" in
    "Dockerfile.pytorch") export TAG=$TAG-$(if [ "$SUPPORT_GPU" = true ]; then echo "pytorch-gpu"; else echo "pytorch-cpu"; fi)${PYTORCH_VERSION}
    ;;
 esac
+export TAG=${TAG}-v${MINOR_RELEASE}
 export TARGET=${REGISTRY}/${IMAGE}:${TAG}
 
 sudo chmod 777 /var/run/docker.sock
