@@ -40,7 +40,7 @@ RUN chgrp -R 0 /usr/local/lib/python3.8 && \\
 COPY feature_store.yaml /feature_store.yaml
 EOF
 
-export TARGET=quay.io/ibm/${IMAGE}:${RELEASE}
+export TARGET=quay.io/ibm/${IMAGE}:v${RELEASE}
 docker build -t ${TARGET} -f Dockerfile .
 
 set +x
