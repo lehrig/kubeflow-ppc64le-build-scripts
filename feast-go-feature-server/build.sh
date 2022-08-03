@@ -24,7 +24,7 @@ RUN mkdir ~/.pip && \\
     echo "extra-index-url = https://repo.fury.io/mgiessing" >> ~/.pip/pip.conf && \\
     pip install pip --upgrade && \\
     pip install --prefer-binary \\
-      feast[redis, go]==${RELEASE}
+      feast[redis,go]==${RELEASE}
 
 RUN mkdir -p /.cache && \\
     chgrp -R 0 /.cache && \\
