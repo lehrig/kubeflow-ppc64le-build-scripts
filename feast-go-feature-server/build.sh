@@ -24,17 +24,15 @@ RUN mkdir ~/.pip && \\
     echo "extra-index-url = https://repo.fury.io/mgiessing" >> ~/.pip/pip.conf && \\
     pip install pip --upgrade && \\
     pip install --prefer-binary \\
-      feast[redis,go]==${RELEASE}
-
-RUN mkdir -p /.cache && \\
+      feast[redis,go]==${RELEASE} \\
+    && \\
+    mkdir -p /.cache && \\
     chgrp -R 0 /.cache && \\
-    chmod -R g=u /.cache
-
-RUN mkdir -p /data && \\
+    chmod -R g=u /.cache && \\
+    mkdir -p /data && \\
     chgrp -R 0 /data && \\
-    chmod -R g=u /data
-
-RUN chgrp -R 0 /usr/local/lib/python3.8 && \\
+    chmod -R g=u /data && \\
+    chgrp -R 0 /usr/local/lib/python3.8 && \\
     chmod -R g=u /usr/local/lib/python3.8
 
 COPY feature_store.yaml /feature_store.yaml
