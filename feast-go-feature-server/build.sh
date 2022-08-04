@@ -8,13 +8,6 @@ online_store:
   type: redis
   connection_string: ${REDIS_HOST:"my-redis-master.redis.svc:6379"},password=${REDIS_PASSWORD}
 go_feature_serving: True
-feature_server:
-  feature_logging:
-    enable: True
-    flush_interval_secs: 300
-    write_to_disk_interval_secs: 30
-    emit_timeout_micro_secs: 10000
-    queue_capacity: 10000
 EOF
 
 cat > Dockerfile <<EOF
