@@ -8,6 +8,7 @@ online_store:
   type: redis
   connection_string: ${REDIS_HOST:"my-redis-master.redis.svc:6379"},password=${REDIS_PASSWORD}
 go_feature_serving: True
+feature_server:
   feature_logging:
     enable: True
     flush_interval_secs: 300
