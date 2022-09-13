@@ -46,12 +46,13 @@ WORKDIR $HOME
 ENV IBM_POWERAI_LICENSE_ACCEPT=yes
 RUN conda config --system --set channel_priority false && \
     conda config --system --prepend channels conda-forge && \
+    conda config --system --prepend channels mgiessing && \
     conda config --system --prepend channels https://opence.mit.edu/ && \
-    conda config --system --prepend channels https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/ && \
+    conda config --system --prepend channels https://repo.anaconda.com/pkgs/main && \
     conda install --quiet --yes \
     ##################
     # conda packages
-    'gxx_linux-ppc64le=9.3.0' \
+    'gxx_linux-ppc64le' \
     'git' \
     && \
     ##################
