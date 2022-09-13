@@ -66,9 +66,9 @@ RUN conda config --system --set channel_priority false && \
 # prepare for go
 USER root
 WORKDIR /root
-RUN wget https://golang.org/dl/go1.16.4.linux-ppc64le.tar.gz
-RUN tar -C /usr/local -xzf go1.16.*
-RUN rm -rf /Miniconda3* go.1.16*
+RUN wget https://go.dev/dl/go1.19.1.linux-ppc64le.tar.gz
+RUN tar -C /usr/local -xzf go1.19.*
+RUN rm -rf /Miniconda3* go.1.19*
 ENV GOROOT=/usr/local/go \
     GOPATH=/usr/local/go/bin \
     PATH=/usr/local/go/bin:$PATH
