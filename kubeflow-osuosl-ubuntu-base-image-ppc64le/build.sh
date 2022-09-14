@@ -8,7 +8,7 @@ FROM quay.io/ibm/kubeflow-notebook-image-ppc64le:jenkins-base-py3.7
 # prepare for kubeflow
 USER root
 
-echo "$NB_USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$NB_USER
+RUN echo "$NB_USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$NB_USER
 
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     apt-transport-https \
