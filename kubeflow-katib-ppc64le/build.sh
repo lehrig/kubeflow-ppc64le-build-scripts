@@ -10,6 +10,7 @@ sed -i '/Building Katib cert generator image/,$d' scripts/v1beta1/build.sh
 
 sudo apt-get update -y && sudo apt-get install openjdk-11-jdk -y
 sudo env "PATH=$PATH" env "GOROOT=$GOROOT" env "GOPATH=$GOPATH" go mod download github.com/containerd/stargz-snapshotter/estargz
+sudo env "PATH=$PATH" env "GOROOT=$GOROOT" env "GOPATH=$GOPATH" go install github.com/golang/mock/mockgen@v1.6.0
 sudo env "PATH=$PATH" env "GOROOT=$GOROOT" env "GOPATH=$GOPATH" make build REGISTRY=quay.io/ibm TAG=${RELEASE} CPU_ARCH=ppc64le
 
 set +x
